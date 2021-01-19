@@ -16,15 +16,13 @@
     </style>
 </head>
 <body>
-    <a href="{% url 'leads:lead-list' %}"> Go back to Leads </a>
+    <a href="{% url 'leads:lead-detail' lead.pk %}"> Go back to Lead Detail view </a>
     <hr />
-    <h1>&nbsp;These are the details for {{ lead.first_name }} {{ lead.last_name }} </h1>
-    <hr />
-    <p> Age: {{ lead.age }} </p>
-    <p> Email: {{ lead.email }} </p>
-    <p> Agent Assigned: {{ lead.agent }} </p>
-    <hr />
-    <a href="{% url 'leads:lead-update' lead.pk %}">Update</a>
-    <a href="{% url 'leads:lead-delete' lead.pk %}">Delete</a>
+    <h1>&nbsp;Update Lead: {{ lead.first_name }} {{ lead.last_name }} </h1>
+    <form method="post" action=".">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
 </body>
 </html>
