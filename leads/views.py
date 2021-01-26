@@ -52,7 +52,7 @@ class LeadListView(LoginRequiredMixin, generic.ListView):
         return queryset
 
 
-def lead_detail(LoginRequiredMixin, pk):
+def lead_detail(request, pk):
     lead = Lead.objects.get(id=pk)
     context = {
         "lead": lead
